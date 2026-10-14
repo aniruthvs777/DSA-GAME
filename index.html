@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Treasure Quest: The Lost Dungeon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" id="homeLink"><span class="brand-mark">✦</span> TREASURE <b>QUEST</b></a>
+    <div class="top-actions"><span class="pill">THE LOST DUNGEON</span><button id="soundBtn" class="icon-btn" aria-label="Toggle sound">♫ Sound: Off</button></div>
+  </header>
+  <main class="shell">
+    <section id="menuScreen" class="screen hero">
+      <div class="hero-copy">
+        <p class="eyebrow">A DUNGEON OF LOGIC & DISCOVERY</p>
+        <h1>Every path<br>holds a <em>secret.</em></h1>
+        <p class="intro">Explore forgotten corridors, collect ancient artifacts, and use the power of algorithms to find your way out.</p>
+        <div class="menu-actions">
+          <button class="primary" id="startBtn">▶ Start Adventure</button>
+          <button class="secondary" id="continueBtn">↻ Continue</button>
+        </div>
+        <div class="menu-links">
+          <button class="text-btn" id="levelsBtn">Choose Level</button>
+          <button class="text-btn" id="howBtn">How to Play</button>
+          <button class="text-btn" id="dsaBtn">DSA Lab ↗</button>
+          <button class="text-btn" id="settingsBtn">Settings</button>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="rune rune-one">ᚷ</div><div class="rune rune-two">✧</div><div class="portal"><div class="portal-inner"><span>✦</span></div></div><div class="stone stone-a"></div><div class="stone stone-b"></div><div class="art-caption">ANCIENT RUINS <span>•</span> FIVE CHALLENGES</div></div>
+      <div class="bottom-note"><span class="dot"></span> YOUR JOURNEY IS SAVED AUTOMATICALLY <span>V 1.0</span></div>
+    </section>
+
+    <section id="gameScreen" class="screen hidden">
+      <div class="page-heading"><div><p class="eyebrow">CAMPAIGN / <span id="levelNumber">LEVEL 01</span></p><h2 id="levelTitle">The Forgotten Entrance</h2><p id="objective" class="muted">Find the key and reach the exit.</p></div><button class="secondary small" id="pauseBtn">Ⅱ Pause</button></div>
+      <div class="game-layout">
+        <div class="board-panel">
+          <div class="board-top"><span><span class="live-dot"></span> DUNGEON MAP</span><span id="boardStatus">Explore carefully</span></div>
+          <div id="board" class="board" aria-label="Dungeon maze"></div>
+          <div class="mobile-controls">
+            <button data-move="up" aria-label="Move up">↑</button>
+            <div><button data-move="left" aria-label="Move left">←</button><button data-move="down" aria-label="Move down">↓</button><button data-move="right" aria-label="Move right">→</button></div>
+          </div>
+          <p class="legend"> <span>🧙 You</span><span>🗝 Key</span><span>🚪 Door</span><span>💎 Treasure</span><span>⚑ Switch</span><span>◇ Exit</span></p>
+        </div>
+        <aside class="side-panel">
+          <div class="stats"><div class="stat"><span>MOVES</span><strong id="moves">0</strong></div><div class="stat"><span>TIME</span><strong id="timer">00:00</strong></div><div class="stat"><span>SCORE</span><strong id="score">0</strong></div></div>
+          <div class="side-card"><div class="card-title">YOUR ARTIFACTS <span>✧</span></div><div id="inventory" class="inventory"><span class="muted">Nothing collected yet.</span></div></div>
+          <div class="side-card"><div class="card-title">FIELD NOTES <span>✎</span></div><p id="message" class="message">The dungeon awaits. Find a path.</p></div>
+          <div class="tool-grid"><button id="hintBtn">☼ Hint</button><button id="undoBtn">↶ Undo</button><button id="restartBtn">⟳ Restart</button><button id="menuBtn">⌂ Menu</button></div>
+          <button id="hidePathBtn" class="secondary full hidden">Hide suggested path</button>
+          <div class="side-card objective-card"><div class="card-title">OBJECTIVE</div><p id="objectiveDetail">Collect the key, then find the exit.</p><div class="progress-track"><div id="progressBar" class="progress-bar"></div></div><small id="progressText">0 / 1 objectives complete</small></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="completeScreen" class="screen hidden centered">
+      <div class="complete-icon">✦</div><p class="eyebrow">DUNGEON CLEARED</p><h2 id="completeTitle">A path well travelled.</h2><p class="muted">You uncovered another part of the lost dungeon.</p>
+      <div class="result-grid"><div><span>SCORE</span><strong id="finalScore">0</strong></div><div><span>MOVES</span><strong id="finalMoves">0</strong></div><div><span>TIME</span><strong id="finalTime">00:00</strong></div><div><span>TREASURE</span><strong id="finalTreasure">0</strong></div></div>
+      <div class="menu-actions centered-actions"><button id="nextBtn" class="primary">Next Level →</button><button id="replayBtn" class="secondary">Replay Level</button><button id="completeMenuBtn" class="text-btn">Main Menu</button></div>
+    </section>
+
+    <section id="levelsScreen" class="screen hidden">
+      <div class="page-heading"><div><p class="eyebrow">CHOOSE YOUR CHALLENGE</p><h2>Dungeon Chapters</h2><p class="muted">Each chamber introduces a new mechanic.</p></div><button class="secondary small" data-home>← Back</button></div>
+      <div id="levelCards" class="level-cards"></div>
+    </section>
+
+    <section id="infoScreen" class="screen hidden">
+      <div class="page-heading"><div><p class="eyebrow" id="infoEyebrow">FIELD GUIDE</p><h2 id="infoTitle">How to Play</h2></div><button class="secondary small" data-home>← Back</button></div>
+      <div id="infoContent" class="info-content"></div>
+    </section>
+
+    <section id="settingsScreen" class="screen hidden">
+      <div class="page-heading"><div><p class="eyebrow">PREFERENCES</p><h2>Settings</h2></div><button class="secondary small" data-home>← Back</button></div>
+      <div class="info-content settings-content"><label class="setting-row"><span><b>Sound effects</b><small>Lightweight feedback sounds</small></span><input type="checkbox" id="soundToggle"></label><label class="setting-row"><span><b>Reduced animations</b><small>Use minimal motion</small></span><input type="checkbox" id="motionToggle"></label><button id="resetSaveBtn" class="danger">Reset saved progress</button></div>
+    </section>
+  </main>
+  <footer><span>BUILT WITH CURIOSITY & CODE</span><span>GRID · GRAPH · BFS · STACK · QUEUE · LINKED LIST</span></footer>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
